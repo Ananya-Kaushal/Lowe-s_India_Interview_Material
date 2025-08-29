@@ -24,7 +24,6 @@ class Solution {
         {
             ans = ans+ " "+str[i];
         }
-
         return ans.trim();
 
     }
