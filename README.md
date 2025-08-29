@@ -34,7 +34,7 @@ Best time to buy a stock is when the price is low and expected to rise in the fu
 
 7.Combination sum
 
-8. Longest substring with no repeated characters
+8.Longest substring with no repeated characters
    
 9.Subtract two Linked list
 
