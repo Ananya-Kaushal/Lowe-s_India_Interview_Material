@@ -3,6 +3,7 @@ Lowe-s India Interview Material
 
 1.Given a string, reverse the order of words.
 
+TYPE 1)
 Example 1:
 
 Input: s = "the sky is blue"
@@ -27,6 +28,32 @@ class Solution {
         }
         return ans.trim();
 
+    }
+}
+
+TYPE 2)
+Example
+Input: "Let's take LeetCode contest"
+Output: "s'teL ekat edoCteeL tsetnoc"
+
+Solution):-
+
+public class Solution {
+    
+    public String reverseWords(String s) {
+        // Write your code here
+
+        s=s.trim();
+        String str[]=s.split("\\s+");
+
+        String ans="";
+        for(int i=0;i<str.length;i++)
+        {
+            StringBuilder sb=new StringBuilder(str[i]).reverse();
+            ans += sb.toString()+ " ";
+        }
+
+        return ans.trim();
     }
 }
 
