@@ -2,6 +2,32 @@
 Lowe-s India Interview Material
 
 1.Given a string, reverse the order of words.
+Example 1:
+
+Input: s = "the sky is blue"
+Output: "blue is sky the"
+Example 2:
+
+Input: s = "  hello world  "
+Output: "world hello"
+Explanation: Your reversed string should not contain leading or trailing spaces.
+
+Solution):-
+class Solution {
+    public String reverseWords(String s) {
+        s=s.trim();
+        String str[]=s.split("\\s+");
+        String ans="";
+
+        for(int i=str.length-1;i>=0;i--)
+        {
+            ans = ans+ " "+str[i];
+        }
+
+        return ans.trim();
+
+    }
+}
 
 2.Given a sorted array that has been rotated,find the index of a target element.
 
