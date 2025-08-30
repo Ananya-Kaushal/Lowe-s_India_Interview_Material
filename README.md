@@ -178,6 +178,54 @@ class Solution {
   Two combinations are unique if the frequency of at least one of the chosen numbers is different.
   You are allowed to use the same number of candidates as many times as needed.
   Example: For nums = [2, 3, 6, 7] and target = 7, the combinations are [7] and [2, 2, 3].
+
+  TYPE 1)Combination Sum1
+  Example 1:
+
+Input: candidates = [2,3,6,7], target = 7
+Output: [[2,2,3],[7]]
+Explanation:
+2 and 3 are candidates, and 2 + 2 + 3 = 7. Note that 2 can be used multiple times.
+7 is a candidate, and 7 = 7.
+These are the only two combinations.
+Example 2:
+
+Input: candidates = [2,3,5], target = 8
+Output: [[2,2,2,2],[2,3,3],[3,5]]
+Example 3:
+
+Input: candidates = [2], target = 1
+Output: []
+
+Solution):-
+class Solution {
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> arr=new ArrayList<>();
+        makeCombinations(0,candidates,target,arr,new ArrayList<>());
+        return arr;
+    }
+
+    public void makeCombinations(int ind, int[] candidates, int target, List<List<Integer>> arr, List<Integer> ds)
+    {
+        if(ind == candidates.length)
+        {
+            if(target == 0)
+            {
+                arr.add(new ArrayList<>(ds));
+            }
+            return;
+        }
+
+        if(candidates[ind] <= target)
+        {
+            ds.add(candidates[ind]);
+            makeCombinations(ind,candidates,target-candidates[ind],arr,ds);//picked option
+            ds.remove(ds.size()-1);//backtracking
+        }
+
+        makeCombinations(ind+1,candidates,target,arr,ds);//not picked option
+    }
+}
   
 4.Given a string s, find the length of the longest substring without repeating characters.
 
