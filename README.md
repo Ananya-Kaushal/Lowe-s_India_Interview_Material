@@ -59,6 +59,118 @@ public class Solution {
 
 2.Given a sorted array that has been rotated,find the index of a target element.
 
+TYPE 1)
+There is an integer array nums sorted in ascending order (with distinct values).
+Example 1:
+
+Input: nums = [4,5,6,7,0,1,2], target = 0
+Output: 4
+Example 2:
+
+Input: nums = [4,5,6,7,0,1,2], target = 3
+Output: -1
+Example 3:
+
+Input: nums = [1], target = 0
+Output: -1
+
+Solution):-
+class Solution {
+    public int search(int[] nums, int target) {
+        
+        int n=nums.length;
+        int i=0,j=n-1;
+        
+        while(i<=j)
+        {
+            int mid=i+(j-i)/2;
+            if(nums[mid] == target)return mid;
+
+            else if(nums[mid]>=nums[i])
+            {
+                if(target>=nums[i] && target <nums[mid])
+                {
+                    j=mid-1;
+                }
+                else{
+                    i=mid+1;
+                }
+            }
+
+            else if(nums[mid]<=nums[j])
+            {
+                if(target<=nums[j] && target > nums[mid])
+                {
+                    i=mid+1;
+                }
+                else{
+                    j=mid-1;
+                }
+            }
+        }
+        return -1;
+    }
+}
+
+TYPE 2)
+There is an integer array nums sorted in non-decreasing order (not necessarily with distinct values).
+
+Example 1:
+
+Input: nums = [2,5,6,0,0,1,2], target = 0
+Output: true
+Example 2:
+
+Input: nums = [2,5,6,0,0,1,2], target = 3
+Output: false
+
+class Solution {
+    public boolean search(int[] nums, int target) {
+        int n=nums.length;
+
+        int i=0,j=n-1;
+
+        while(i<=j)
+        {
+            int mid=i+(j-i)/2;
+            if(nums[mid] == target)return true;
+
+            if(nums[mid] == nums[i])
+            {
+                i++;
+                continue;
+            }
+
+            else if(nums[mid] >= nums[i])
+            {
+                // if(nums[i] == target)return true;
+                // else 
+                if(target >= nums[i] && target < nums[mid])
+                {
+                    j=mid-1;
+                }
+                else
+                {
+                    i=mid+1;
+                }
+            }
+            else if(nums[mid] <= nums[j])
+            {
+                // if(nums[j] == target)return true;
+                // else
+                if(target <= nums[j] && target  > nums[mid])
+                {
+                    i=mid+1;
+                }
+                else{
+                    j=mid-1;
+                }
+            }
+        }
+        return false;
+    }
+}
+
 3.Given an array of distinct integers candidates and a target integer target, return a
   list of all unique combinations of candidates where the chosen numbers sum to target.
   You may return the combinations in any order. 
