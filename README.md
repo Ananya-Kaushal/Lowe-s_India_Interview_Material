@@ -404,7 +404,41 @@ class Solution {
 
 4.Given a string s, find the length of the longest substring without repeating characters.
 
-5. If frequent insertions and deletions occur, which data structure would you choose and why?
+TYPE 1:-
+Example 1:
+
+Input: s = "abcabcbb"
+Output: 3
+Explanation: The answer is "abc", with the length of 3.
+Example 2:
+
+Input: s = "bbbbb"
+Output: 1
+Explanation: The answer is "b", with the length of 1.
+
+Solution):-
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int n=s.length();
+        int start=0,maxlen=0;
+
+        HashMap<Character,Integer> map=new HashMap<>();
+        for(int end=0;end<n;end++)
+        {
+            char c=s.charAt(end);
+            if(map.containsKey(c) && map.get(c)>=start)
+            {
+                start=map.get(c)+1;
+            }
+            map.put(c,end);
+            maxlen=Math.max(maxlen,end-start+1);
+        }
+
+        return maxlen;
+    }
+}
+
+5.If frequent insertions and deletions occur, which data structure would you choose and why?
    
 6.How you connect Kafka to spring boot project
  1. How Microservices Communicate with eachother
