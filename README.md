@@ -255,7 +255,7 @@ Output:
 [5]
 ]
 
-Solution:-
+Solution 1):-
 class Solution {
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
 
@@ -293,6 +293,41 @@ class Solution {
 
 //T.C.:- 2^n*(klogn) by pick and non-pick approach
 //Giving TLE:-Time Limit Exceeded
+
+Solution 2):-
+class Solution {
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+
+        List<List<Integer>> arr=new ArrayList<>();
+        Arrays.sort(candidates);
+        makeCombinations(0,candidates,target,arr,new ArrayList<>());
+        return arr;
+    }
+
+    public void makeCombinations(int ind,int[] candidates,int target, List<List<Integer>> ans, List<Integer> ds)
+    {
+        if(target == 0)
+        {
+            ans.add(new ArrayList<>(ds));
+            return;
+        }
+
+        for(int i=ind;i<candidates.length;i++)
+        {
+            if(i>ind && candidates[i]==candidates[i-1])continue;
+            if(candidates[i]>target)break;
+
+            ds.add(candidates[i]);
+            makeCombinations(i+1,candidates,target-candidates[i],ans,ds);
+            ds.remove(ds.size()-1);
+        }
+    }
+}
+
+//T.C:- 2^n * k
+//S.C:-k*x
+//Hence ,it's looping from index to n-1 in each and every recursion call.(Sequential Approach)
+
 4.Given a string s, find the length of the longest substring without repeating characters.
 
 5. If frequent insertions and deletions occur, which data structure would you choose and why?
