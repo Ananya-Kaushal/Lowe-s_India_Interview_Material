@@ -456,8 +456,10 @@ To reverse a stack, use an auxiliary stack to pop elements from the original sta
 Best time to buy a stock is when the price is low and expected to rise in the future.
 
 7.Combination sum
+Same as Question 3)
 
 8.Longest substring with no repeated characters
+Same as Question 4)
    
 9.Subtract two Linked list
 
