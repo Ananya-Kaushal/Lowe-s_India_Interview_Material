@@ -226,7 +226,73 @@ class Solution {
         makeCombinations(ind+1,candidates,target,arr,ds);//not picked option
     }
 }
-  
+
+TYPE 2)
+Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sum to target.
+
+Each number in candidates may only be used once in the combination.
+
+Note: The solution set must not contain duplicate combinations.
+
+ 
+
+Example 1:
+
+Input: candidates = [10,1,2,7,6,1,5], target = 8
+Output: 
+[
+[1,1,6],
+[1,2,5],
+[1,7],
+[2,6]
+]
+Example 2:
+
+Input: candidates = [2,5,2,1,2], target = 5
+Output: 
+[
+[1,2,2],
+[5]
+]
+
+Solution:-
+class Solution {
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+
+        Arrays.sort(candidates);
+        Set<List<Integer>> ans = new HashSet<>();
+        List<List<Integer>> arr=new ArrayList<>();
+        makeCombinations(0,candidates,target,ans,new ArrayList<>());
+        //Convert Set of List into List of List
+        arr.addAll(ans);
+        return arr;
+    }
+
+    public void makeCombinations(int ind,int[] candidates,int target, Set<List<Integer>> ans, List<Integer> ds)
+    {
+        if(ind == candidates.length)
+        {
+            if(target == 0)
+            {
+                ans.add(new ArrayList<>(ds));
+            }
+            return ;
+        }
+
+        if(candidates[ind] <= target)
+        {
+            ds.add(candidates[ind]);
+            makeCombinations(ind+1,candidates,target-candidates[ind],ans,ds);
+            ds.remove(ds.size()-1);
+        }
+
+        makeCombinations(ind+1,candidates,target,ans,ds);
+
+    }
+}
+
+//T.C.:- 2^n*(klogn) by pick and non-pick approach
+//Giving TLE:-Time Limit Exceeded
 4.Given a string s, find the length of the longest substring without repeating characters.
 
 5. If frequent insertions and deletions occur, which data structure would you choose and why?
