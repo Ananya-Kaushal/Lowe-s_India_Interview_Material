@@ -200,3 +200,27 @@ class Solution {
         return false;
     }
 }
+
+Ques 6)Delete the Head of the Linked List?
+
+Solution):-
+
+class Node
+{
+    int data;
+    Node next;
+
+    Node(int d)
+    {
+        this.data = d;
+        this.next = null;
+    }
+}
+class Solution {
+    Node deleteHeadNode(Node head) {
+        // code here
+        if(head == null)return null;
+        head=head.next;
+        return head;
+    }
+}
