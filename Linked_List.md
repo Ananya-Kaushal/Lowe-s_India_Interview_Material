@@ -255,3 +255,57 @@ class Solution {
         return head;
     }
 }
+
+Ques 8)Delete a Node in Linked List as Position of that Node is Given?
+
+TYPE 1):-
+
+Input: Head Node = 8(8 -> 2 -> 3 -> 1 -> 7), x = 1,
+    
+Output: 2 -> 3 -> 1 -> 7
+Explanation: After deleting the node at the 1st position (1-base indexing), the linked list is as
+    
+
+Solution):-
+
+class Node
+{
+    int data;
+    Node next;
+
+    Node(int d)
+    {
+        this.data = d;
+        this.next = null;
+    }
+}
+class Solution {
+    Node deleteNode(Node head, int x) {
+        // code here
+        if(head == null)return null;
+        
+        if(x == 1)//Delete the head of L.L.
+        {
+            head=head.next;
+            return head;
+        }
+        
+        Node temp=head;
+        Node prev=null;
+        int cnt=0;
+        
+        while(temp != null)
+        {
+            cnt++;
+            if(cnt == x)
+            {
+                prev.next=prev.next.next;
+                break;
+            }
+            prev=temp;
+            temp=temp.next;
+        }
+        
+        return head;
+    }
+}
