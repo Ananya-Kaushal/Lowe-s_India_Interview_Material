@@ -357,3 +357,29 @@ public class ListNode {
     }
 
     //T.C.:- O(n) where n is the length of the L.L.
+
+Ques 10)Insert at the head a nee node?
+
+Input: LinkedList = 1->2->4 , x = 3
+Output: 3->1->2->4
+Explanation: The new element is inserted after the Head element in the linked list.
+
+Solution):-
+
+class Node {
+    int data;
+    Node next;
+
+    public Node(int data){
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class Solution {
+    public Node insertInMiddle(Node head, int x) {
+        // Code here
+        Node temp=new Node(x,head);
+        return temp;
+    }
+}
