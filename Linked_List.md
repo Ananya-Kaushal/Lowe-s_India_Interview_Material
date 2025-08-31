@@ -17,6 +17,12 @@ public class Node {
         this.data = data;
         this.next = null;
     }
+
+    public Node(int data1,Node node)
+    {
+        this.data=data1;
+        this.next=node;
+    }
 }
 
 Applications of Linked List:-
@@ -41,4 +47,22 @@ Extra memory required for storing pointers.
 No direct/random access (need traversal).
 
 Cache unfriendly (not stored in contiguous memory).
+
+MEMORY USAGE:-
+-----------------------------------------------------------------------------------
+In 32 Bits:-
+-----------------
+Integer:- 4 bytes
+pointer:- 4 bytes
+------------------
+Total:- 8 bytes
+------------------
+
+In 64 Bits:-
+-------------------
+Integer:- 4 bytes
+pointer:- 8 bytes
+-------------------
+Total:- 12 bytes
+-------------------
 
