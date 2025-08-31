@@ -309,3 +309,5 @@ class Solution {
         return head;
     }
 }
+
+//T.C:-O(k)
