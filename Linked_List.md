@@ -152,7 +152,7 @@ class Solution {
     }
 }
 
-Ques 3)Find Length of Linked List?
+Ques 4)Find Length of Linked List?
 
 Solution):-
 
@@ -174,5 +174,29 @@ class Solution {
         }
         
         return length;
+    }
+}
+
+Ques 5)Search in Linked List?
+
+Solution):-
+
+class Node {
+   int data;
+    Node next;
+
+    Node(int d)  { data = d;  next = null; }
+}
+class Solution {
+    public boolean searchKey(Node head, int key) {
+        // Code here
+        Node temp=head;
+        while(temp != null)
+        {
+            if(temp.data==key)return true;
+            temp=temp.next;
+        }
+        
+        return false;
     }
 }
