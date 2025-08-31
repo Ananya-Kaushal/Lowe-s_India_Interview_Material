@@ -67,7 +67,9 @@ Total:- 12 bytes
 -------------------
 
 Ques 1)Array to a Linked List?
+
 Solution):-
+
 class Node {
     int data;
     Node next;
@@ -96,5 +98,56 @@ class Solution {
         }
         
         return head;
+    }
+}
+
+Ques 2)Traverse a Linked List?
+
+Solution):-
+class Node {
+    int data;
+    Node next;
+    Node(int x) {
+        data = x;
+        next = null;
+    }
+}
+
+class Solution {
+    public ArrayList<Integer> printList(Node head) {
+        // code here
+        Node temp=head;
+        while(temp != null)
+        {
+            System.out.println(temp.data);
+            temp=temp.next;
+        }
+    }
+}
+
+Ques 3)Print a Linked List using ArrayList?
+
+Solution):-
+
+class Node {
+    int data;
+    Node next;
+    Node(int x) {
+        data = x;
+        next = null;
+    }
+}
+
+class Solution {
+    public ArrayList<Integer> printList(Node head) {
+        // code here
+        Node temp=head;
+        ArrayList<Integer> arr=new ArrayList<>();
+        while(temp != null)
+        {
+            arr.add(temp.data);
+            temp=temp.next;
+        }
+        return arr;
     }
 }
