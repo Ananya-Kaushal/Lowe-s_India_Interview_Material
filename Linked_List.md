@@ -311,3 +311,49 @@ class Solution {
 }
 
 //T.C:-O(k)
+
+Ques 9)Delete a Node in Linked List as Value(data) of that Node is Given?
+
+TYPE 2):-
+
+Input: Head Node = 8(8 -> 2 -> 3 -> 1 -> 7), x = 1,
+    
+Output: 8 -> 2 -> 3 -> 7
+
+Solution):-
+
+public class ListNode {
+    int val;
+    ListNode next;
+    ListNode() {}
+    ListNode(int val) { this.val = val; }
+    ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+  }
+
+  public ListNode deleteNode(ListNode head ,int x)
+    {
+
+        if(head == null)return head;
+
+        if(head.val == x)
+        {
+            head=head.next;
+            return head;
+        }
+
+        ListNode temp=head;
+        ListNode prev=null;
+
+        while(temp != null)
+        {
+            if(temp.val == x)
+            {
+                prev.next = prev.next.next;
+            }
+            prev=temp;
+            temp=temp.next;
+        }
+        return head;
+    }
+
+    //T.C.:- O(n) where n is the length of the L.L.
