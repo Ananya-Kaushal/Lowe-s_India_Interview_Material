@@ -383,3 +383,41 @@ class Solution {
         return temp;
     }
 }
+
+Ques 11)Insert the new node at last of the Linked List?
+
+Input: LinkedList = 1->2->4 , x = 3
+Output: 1->2->4->3
+Explanation: The new element is inserted at the end of linked list.
+
+Solution):-
+
+class Node {
+    int data;
+    Node next;
+
+    public Node(int data){
+        this.data = data;
+        this.next = null;
+    }
+}
+class Solution {
+    public Node insertInMiddle(Node head, int x) {
+        // Code here
+        
+        if(head == null)
+        {
+            return new Node(x);
+        }
+        
+        Node temp=head;
+        Node m=new Node(x);
+        while(temp.next != null)
+        {
+            temp=temp.next;
+        }
+        
+        temp.next=m;
+        return head;
+    }
+}
