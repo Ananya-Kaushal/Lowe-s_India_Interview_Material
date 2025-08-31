@@ -27,13 +27,17 @@ Applications of Linked List:-
 
 Advantage:-
 -----------------------------------------------------------------------------------
-Dynamic size (no fixed limit like arrays)
-Efficient insertion and deletion (especially in the middle)
-Can implement complex data structures like stack, queue, graph
+Dynamic size (no fixed limit like arrays).
+
+Efficient insertion and deletion (especially in the middle).
+
+Can implement complex data structures like stack, queue, graph.
 
 Disadvantage:-
 -----------------------------------------------------------------------------------
-Extra memory required for storing pointers
-No direct/random access (need traversal)
-Cache unfriendly (not stored in contiguous memory)
+Extra memory required for storing pointers.
+
+No direct/random access (need traversal).
+
+Cache unfriendly (not stored in contiguous memory).
 
