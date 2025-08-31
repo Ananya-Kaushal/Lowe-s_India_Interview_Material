@@ -66,3 +66,35 @@ pointer:- 8 bytes
 Total:- 12 bytes
 -------------------
 
+Ques 1)Array to a Linked List?
+Solution):-
+class Node {
+    int data;
+    Node next;
+
+    Node (int d, Node next) {
+       this.data = d;
+       this.next = next;
+    }
+    Node (int d) {
+       this.data = d;
+       this.next = null;
+    }
+};
+class Solution {
+    public Node arrayToList(int arr[]) {
+        // code here
+        int n=arr.length;
+        Node head=new Node(arr[0]);
+        Node mover=head;
+        
+        for(int i=1;i<n;i++)
+        {
+            Node temp=new Node(arr[i]);
+            mover.next=temp;
+            mover=temp;
+        }
+        
+        return head;
+    }
+}
