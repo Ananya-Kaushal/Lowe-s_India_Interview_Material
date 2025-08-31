@@ -224,3 +224,34 @@ class Solution {
         return head;
     }
 }
+
+Ques 7)Delete the last Element in the Linked List?
+
+Solution):-
+
+class Node
+{
+    int data;
+    Node next;
+
+    Node(int d)
+    {
+        this.data = d;
+        this.next = null;
+    }
+}
+class Solution {
+    Node deleteNode(Node head, int x) {
+        // code here
+        
+        //Delete the last element in L.L.
+        if(head == null || head.next==null)return null;
+        Node temp=head;
+        while(temp.next.next != null)
+        {
+            temp=temp.next;
+        }
+        temp.next=null;
+        return head;
+    }
+}
