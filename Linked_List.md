@@ -566,3 +566,89 @@ class Main {
         return head;
     }
 }
+
+Ques 13)Insert an Element before the value Val?
+
+Solution):-
+
+class Node { int data; Node next;
+
+Node (int d, Node next) {
+   this.data = d;
+   this.next = next;
+}
+Node (int d) {
+   this.data = d;
+   this.next = null;
+}
+}; 
+class Main {
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        int arr[]={1, 2, 4, 3, 8, 6};
+        Node head=arrayToList(arr);
+        printLinkedList(head);
+        Node insertion=insertAtK(head, 10, 4);
+        printLinkedList(insertion);
+        Node insertB=insertBeforeValue(head , 17, 8);
+        printLinkedList(insertB);
+    }
+    
+    public static Node arrayToList(int arr[]) 
+    { // code here 
+    int n=arr.length; 
+    Node head=new Node(arr[0]); 
+    Node mover=head;
+
+    for(int i=1;i<n;i++)
+    {
+        Node temp=new Node(arr[i]);
+        mover.next=temp;
+        mover=temp;
+    }
+    
+    return head;
+    }
+    
+    public static void printLinkedList(Node head)
+    {
+        Node temp=head;
+        while(temp != null)
+        {
+            if(temp.next != null)System.out.print(temp.data+"->");
+            else
+            {
+                System.out.print(temp.data);
+            }
+            temp=temp.next;
+        }
+        System.out.println();
+    }
+    
+    public static Node insertBeforeValue(Node head, int el, int val)
+    {
+        if(head == null)
+        {
+            return null;
+        }
+        
+        if(head.data == val)
+        {
+            Node temp=new Node(el,head);
+            return temp;
+        }
+        
+        Node temp=head;
+        while(temp != null)
+        {
+            if(temp.next.data == val)
+            {
+                Node m=new Node(el,temp.next);
+                temp.next=m;
+                break;
+            }
+            temp=temp.next;
+        }
+        return head;
+    }
+}
