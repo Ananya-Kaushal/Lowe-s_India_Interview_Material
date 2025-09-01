@@ -477,3 +477,92 @@ class Solution {
 Ques 12) Insert in the Linked List the element at a given postion?
 
 Solution):-
+
+class Node { int data; Node next;
+
+Node (int d, Node next) {
+   this.data = d;
+   this.next = next;
+}
+Node (int d) {
+   this.data = d;
+   this.next = null;
+}
+}; 
+class Main {
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        int arr[]={1, 2, 4, 3, 8, 6};
+        Node head=arrayToList(arr);
+        printLinkedList(head);
+        Node insertion=insertAtK(head, 10, 4);
+        printLinkedList(insertion);
+    }
+    
+    public static Node arrayToList(int arr[]) 
+    { // code here 
+    int n=arr.length; 
+    Node head=new Node(arr[0]); 
+    Node mover=head;
+
+    for(int i=1;i<n;i++)
+    {
+        Node temp=new Node(arr[i]);
+        mover.next=temp;
+        mover=temp;
+    }
+    
+    return head;
+    }
+    
+    public static void printLinkedList(Node head)
+    {
+        Node temp=head;
+        while(temp != null)
+        {
+            if(temp.next != null)System.out.print(temp.data+"->");
+            else
+            {
+                System.out.print(temp.data);
+            }
+            temp=temp.next;
+        }
+        System.out.println();
+    }
+    
+    public static Node insertAtK(Node head, int el,int k)
+    {
+        if(head == null)
+        {
+            if(k==1)
+            return new Node(el);
+            
+            else{
+                return null;
+            }
+        }
+        
+        if(k == 1)
+        {
+            Node temp=new Node(el,head);
+            return temp;
+        }
+        
+        int cnt=0;
+        Node temp=head;
+        while(temp != null)
+        {
+            cnt++;
+            if(cnt == k-1)
+            {
+                Node m=new Node(el);
+                Node nextpointer = temp.next;
+                temp.next=m;
+                m.next=nextpointer;
+                break;
+            }
+            temp=temp.next;
+        }
+        return head;
+    }
+}
