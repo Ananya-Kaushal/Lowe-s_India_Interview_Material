@@ -103,41 +103,51 @@ class Solution {
 
 Solution 2)Here we are also printing the Linked List
 
-class Node { int data; Node next;
-
-Node (int d, Node next) {
-   this.data = d;
-   this.next = next;
-}
-Node (int d) {
-   this.data = d;
-   this.next = null;
-}
-}; 
-class Main {
-    public static void main(String[] args) {
-        System.out.println("Try programiz.pro");
-        int arr[]={1, 2, 4, 3, 8, 6};
-        Node head=arrayToList(arr);
-        printLinkedList(head);
-    }
+class Node 
+{ 
+    int data; 
+    Node next;
+    Node (int d, Node next) 
+    { 
+        this.data = d; 
+        this.next = next; 
+        
+    } 
+    Node (int d) 
+    { 
+        this.data = d; 
+        this.next = null; 
+        
+    } 
     
+}; 
+class Main 
+{ 
+    public static void main(String[] args) 
+    { 
+        System.out.println("Try programiz.pro"); 
+        int arr[]={1, 2, 4, 3, 8, 6}; 
+        Node head=arrayToList(arr); 
+        printLinkedList(head); 
+        
+    }
     public static Node arrayToList(int arr[]) 
     { // code here 
-    int n=arr.length; 
-    Node head=new Node(arr[0]); 
-    Node mover=head;
+    
+          int n=arr.length; 
+          Node head=new Node(arr[0]); 
+          Node mover=head;
 
-    for(int i=1;i<n;i++)
-    {
-        Node temp=new Node(arr[i]);
-        mover.next=temp;
-        mover=temp;
+        for(int i=1;i<n;i++)
+        {
+            Node temp=new Node(arr[i]);
+            mover.next=temp;
+            mover=temp;
+        }
+
+        return head;
     }
-    
-    return head;
-    }
-    
+        
     public static void printLinkedList(Node head)
     {
         Node temp=head;
