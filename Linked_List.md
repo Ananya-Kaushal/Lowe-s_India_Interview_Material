@@ -643,8 +643,13 @@ class Main {
         {
             if(temp.next.data == val)
             {
-                Node m=new Node(el,temp.next);
+                // Node m=new Node(el,temp.next);
+                // temp.next=m;
+                // break;
+                Node m=new Node(el);
+                Node p=temp.next;
                 temp.next=m;
+                m.next=p;
                 break;
             }
             temp=temp.next;
