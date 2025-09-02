@@ -909,3 +909,154 @@ class Main
     }
 
 }
+
+Ques 17)Delete Kth Node in Doubly Linked List?
+
+Solution):-
+
+class Node
+{
+    int data;
+    Node next;
+    Node prev;
+    
+    Node(int data, Node next, Node prev)
+    {
+        this.data=data;
+        this.next=next;
+        this.prev=prev;
+    }
+    
+    Node(int data)
+    {
+        this.data=data;
+        this.next=next;
+        this.prev=prev;
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        int arr[]={1, 2, 4, 3, 8, 6}; 
+        Node head=arrayToList(arr); 
+        printLinkedList(head); 
+        Node removeKNode =deleteKthNode(head, 3);
+        printLinkedList(removeKNode);
+    }
+    
+    public static Node arrayToList(int arr[]) 
+    { // code here 
+    
+        int n=arr.length; 
+        Node head=new Node(arr[0]); 
+        Node prev=head;
+        
+        for(int i=1;i<n;i++)
+        {
+            Node temp=new Node(arr[i],null,prev);
+            prev.next=temp;
+            prev=temp;
+        }
+        
+        return head;
+    }
+    
+    public static void printLinkedList(Node head)
+    {
+        Node temp=head;
+        while(temp != null)
+        {
+            if(temp.next != null)System.out.print(temp.data+"->");
+            else
+            {
+                System.out.print(temp.data);
+            }
+            temp=temp.next;
+        }
+        System.out.println();
+    }
+    
+    public static Node deleteTail(Node head)
+    {
+        if(head == null || head.next == null)
+        {
+            return null;
+        }
+        
+        Node tail=head;
+        
+        while(tail.next != null)
+        {
+            tail=tail.next;
+        }
+        
+        Node back=tail.prev;
+        back.next=null;
+        tail.prev=null;
+        
+        return head;
+    }
+    
+    public static Node deleteHead(Node head)
+    {
+        if(head == null || head.next == null)
+        {
+            return null;
+        }
+        
+        Node temp=head;
+        temp=temp.next;
+        temp.prev=null;
+        head.next=null;
+        
+        return temp;
+    }
+    
+    public static Node deleteKthNode(Node head, int k)
+    {
+        if(head == null)
+        {
+            return null;
+        }
+        
+        else if(k ==1 && head.next == null)
+        {
+            return null;
+        }
+        
+        Node temp=head;
+        int cnt=0;
+        while(temp != null)
+        {
+            cnt++;
+            if(cnt == k)break;
+            temp=temp.next;
+        }
+        
+        Node back=temp.prev;
+        Node front=temp.next;
+        
+        if(back == null && front == null)
+        {
+            return null;
+        }
+        
+        else if(back == null)
+        {
+            deleteHead(temp);
+        }
+        
+        else if(front == null)
+        {
+            deleteTail(temp);
+        }
+        
+        back.next =front;
+        front.prev=back;
+        
+        temp.next=null;
+        temp.prev=null;
+        
+        return head;
+    }
+}
