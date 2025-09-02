@@ -694,7 +694,8 @@ class Node
         this.prev=prev;
     }
 }
-class Main {
+class Main 
+{
     public static void main(String[] args) {
         System.out.println("Try programiz.pro");
         int arr[]={1, 2, 4, 3, 8, 6}; 
@@ -731,5 +732,83 @@ class Main {
             }
             temp=temp.next;
         }
+        System.out.println();
     }
+}
+
+Ques 15)Delete the Head of the Doubly Linked List?
+
+Solution):-
+
+class Node
+{
+    int data;
+    Node next;
+    Node prev;
+    
+    Node(int data, Node next, Node prev)
+    {
+        this.data=data;
+        this.next=next;
+        this.prev=prev;
     }
+    
+    Node(int data)
+    {
+        this.data=data;
+        this.next=next;
+        this.prev=prev;
+    }
+}
+class Main 
+{
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        int arr[]={1, 2, 4, 3, 8, 6}; 
+        Node head=arrayToList(arr); 
+        printLinkedList(head);
+        Node removeHead=removeHeadOfDLL(head);
+        printLinkedList(removeHead);
+
+    }
+    public static Node arrayToList(int arr[]) 
+    { // code here 
+    
+          int n=arr.length; 
+          Node head=new Node(arr[0]); 
+          Node prev=head;
+    
+        for(int i=1;i<n;i++)
+        {
+            Node temp=new Node(arr[i],null,prev);
+            prev.next=temp;
+            prev=temp;
+        }
+    
+        return head;
+    }
+    
+    public static Node removeHeadOfDLL(Node head)
+    {
+        Node temp=head.next;
+        head.next=null;
+        temp.prev=null;
+        
+        return temp;
+    }
+        
+    public static void printLinkedList(Node head)
+    {
+        Node temp=head;
+        while(temp != null)
+        {
+            if(temp.next != null)System.out.print(temp.data+"->");
+            else
+            {
+                System.out.print(temp.data);
+            }
+            temp=temp.next;
+        }
+        System.out.println();
+    }
+}
