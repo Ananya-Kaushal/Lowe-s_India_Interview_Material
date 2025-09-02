@@ -788,11 +788,18 @@ class Main
     
     public static Node removeHeadOfDLL(Node head)
     {
-        Node temp=head.next;
-        head.next=null;
-        temp.prev=null;
+        // Node temp=head.next;
+        // head.next=null;
+        // temp.prev=null;
+        // return temp;
+
+        Node back=head;
+        head=head.next;
         
-        return temp;
+        head.prev=null;
+        back.next=null;
+        
+        return head;
     }
         
     public static void printLinkedList(Node head)
