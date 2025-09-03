@@ -455,14 +455,78 @@ To reverse a stack, use an auxiliary stack to pop elements from the original sta
 
 Best time to buy a stock is when the price is low and expected to rise in the future.
 
-7.Combination sum
+7.Combination sum.
 Same as Question 3)
 
-8.Longest substring with no repeated characters
+8.Longest substring with no repeated characters.
 Same as Question 4)
    
-9.Subtract two Linked list
+9.Subtract two Linked list.
 
-10.Trim Binary Tree
+10.Trim Binary Tree.
 
-11.
+11.Print the reverse array word wise.
+
+12.Implement a Custom Comparator to sort employees by salary, then name.
+
+
+13.Find the Longest Increasing Subsequence (LIS) in an array.
+
+
+14.Given an array of integers, return indices of two numbers such that they add up to a target (Two Sum).
+
+
+15.Merge two sorted arrays without using extra space.
+
+16.Candidates Score:-the candidate with the highest average.
+
+Solution:-
+
+import java.util.*;
+
+public class CandidateScores {
+    public static void main(String[] args) {
+        // Input data
+        String[][] input = {
+            {"Bobby", "87"},
+            {"Charles", "100"},
+            {"Eric", "64"},
+            {"Bobby", "80"}
+        };
+
+        // Map to store scores of candidates
+        Map<String, List<Integer>> scoresMap = new HashMap<>();
+
+        // Populate the map with scores
+        for (String[] entry : input) {
+            String name = entry[0];
+            int score = Integer.parseInt(entry[1]);
+            scoresMap.putIfAbsent(name, new ArrayList<>());
+            scoresMap.get(name).add(score);
+        }
+
+        // Variables to store the highest average and the corresponding candidate
+        String topCandidate = null;
+        double highestAverage = 0.0;
+
+        // Calculate averages and find the highest average
+        for (Map.Entry<String, List<Integer>> entry : scoresMap.entrySet()) {
+            String candidate = entry.getKey();
+            List<Integer> scores = entry.getValue();
+            double average = scores.stream().mapToInt(Integer::intValue).average().orElse(0.0);
+
+            System.out.printf("%s's average: %.2f%n", candidate, average);
+
+            if (average > highestAverage) {
+                highestAverage = average;
+                topCandidate = candidate;
+            }
+        }
+
+        // Output the candidate with the highest average
+        if (topCandidate != null) {
+            System.out.printf("Candidate with the highest average: %s with an average of %.2f%n", topCandidate, highestAverage);
+        }
+    }
+}
+
