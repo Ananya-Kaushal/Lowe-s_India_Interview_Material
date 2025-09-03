@@ -1693,3 +1693,133 @@ Output:-
 Try programiz.pro
 1->2->4->3->8->6
 1->2->4->3->8->6->9
+
+Ques 24) Insert Before the Kth Node a new Node in the Doubly Linked List?
+
+Solution):-
+
+class Node
+{
+    int data;
+    Node next;
+    Node prev;
+    
+    Node(int data, Node next, Node prev)
+    {
+        this.data=data;
+        this.next=next;
+        this.prev=prev;
+    }
+    
+    Node(int data)
+    {
+        this.data=data;
+        this.next=next;
+        this.prev=prev;
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        int arr[]={1, 2, 4, 3, 8, 6}; 
+        Node head=arrayToList(arr); 
+        printLinkedList(head); 
+        Node insertBKth =insertBeforeKthElement(head,3, 9);
+        printLinkedList(insertBKth);
+    }
+    
+    public static Node arrayToList(int arr[]) 
+    { // code here 
+    
+        int n=arr.length; 
+        Node head=new Node(arr[0]); 
+        Node prev=head;
+        
+        for(int i=1;i<n;i++)
+        {
+            Node temp=new Node(arr[i],null,prev);
+            prev.next=temp;
+            prev=temp;
+        }
+        
+        return head;
+    }
+    
+    public static void printLinkedList(Node head)
+    {
+        Node temp=head;
+        while(temp != null)
+        {
+            if(temp.next != null)System.out.print(temp.data+"->");
+            else
+            {
+                System.out.print(temp.data);
+            }
+            temp=temp.next;
+        }
+        System.out.println();
+    }
+    
+    public static Node insertBeforeHead(Node head, int val)
+    {
+        Node newHead = new Node(val,head,null);
+        // newHead.prev=null;
+        
+        head.prev=newHead;
+        
+        return newHead;
+    }
+    
+    public static Node insertAfterTail(Node head, int val)
+    {
+        Node tail=head;
+        
+        while(tail.next != null)
+        {
+            tail=tail.next;
+        }
+        
+        Node newTail=new Node(val,null,tail);
+        tail.next=newTail;
+        
+        return head;
+    }
+    
+    public static Node insertBeforeKthElement(Node head, int k, int val)
+    {
+        if(k == 1)
+        {
+            return insertBeforeHead(head,val);
+        }
+        
+        Node temp=head;
+        int cnt=0;
+        while(temp != null)
+        {
+            cnt++;
+            if(cnt == k)
+            {
+                break;
+            }
+            temp=temp.next;
+        }
+        
+        if(temp == null)
+        {
+            return insertAfterTail(head,val);
+        }
+        
+        Node back=temp.prev;
+        Node newNode=new Node(val,temp,back);
+        
+        temp.prev=newNode;
+        back.next=newNode;
+        
+        return head;
+    }
+}
+
+Output:-
+Try programiz.pro
+1->2->4->3->8->6
+1->2->9->4->3->8->6
