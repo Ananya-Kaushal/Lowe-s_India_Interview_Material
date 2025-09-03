@@ -1484,13 +1484,10 @@ class Main {
     public static Node insertAfterHead(Node head, int val)
     {
         Node front=head.next;
-        Node temp=new Node(val);
+        Node temp=new Node(val,front,head);
         
         head.next=temp;
         front.prev=temp;
-        
-        temp.prev=head;
-        temp.next=front;
         
         return head;
     }
@@ -1577,13 +1574,10 @@ class Main {
         }
         
         Node back=tail.prev;
-        Node newNode=new Node(val);
+        Node newNode=new Node(val,tail,back);
         
         back.next=newNode;
         tail.prev=newNode;
-        
-        newNode.prev=back;
-        newNode.next=tail;
         
         return head;
     }
