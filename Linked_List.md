@@ -1770,8 +1770,17 @@ class Main {
         return newHead;
     }
     
-    public static Node insertAfterTail(Node head, int val)
+    public static Node insertBeforeTail(Node head, int val)
     {
+        if(head == null)
+        {
+            return new Node(val);
+        }
+        
+        else if(head.next == null)
+        {
+            return insertBeforeHead(head, val);
+        }
         Node tail=head;
         
         while(tail.next != null)
@@ -1779,8 +1788,11 @@ class Main {
             tail=tail.next;
         }
         
-        Node newTail=new Node(val,null,tail);
-        tail.next=newTail;
+        Node back=tail.prev;
+        Node newNode=new Node(val,tail,back);
+        
+        back.next=newNode;
+        tail.prev=newNode;
         
         return head;
     }
@@ -1804,9 +1816,9 @@ class Main {
             temp=temp.next;
         }
         
-        if(temp == null)
+        if(temp.next == null)
         {
-            return insertAfterTail(head,val);
+            return insertBeforeTail(head,val);
         }
         
         Node back=temp.prev;
