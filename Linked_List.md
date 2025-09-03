@@ -1414,3 +1414,89 @@ Output:-
 Try programiz.pro
 1->2->4->3->8->6
 9->1->2->4->3->8->6
+
+Ques 21) Insert After the Head in Doubly Linked List?
+
+Solution):-
+
+class Node
+{
+    int data;
+    Node next;
+    Node prev;
+    
+    Node(int data, Node next, Node prev)
+    {
+        this.data=data;
+        this.next=next;
+        this.prev=prev;
+    }
+    
+    Node(int data)
+    {
+        this.data=data;
+        this.next=next;
+        this.prev=prev;
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        int arr[]={1, 2, 4, 3, 8, 6}; 
+        Node head=arrayToList(arr); 
+        printLinkedList(head); 
+        Node insertAHead =insertAfterHead(head, 9);
+        printLinkedList(insertAHead);
+    }
+    
+    public static Node arrayToList(int arr[]) 
+    { // code here 
+    
+        int n=arr.length; 
+        Node head=new Node(arr[0]); 
+        Node prev=head;
+        
+        for(int i=1;i<n;i++)
+        {
+            Node temp=new Node(arr[i],null,prev);
+            prev.next=temp;
+            prev=temp;
+        }
+        
+        return head;
+    }
+    
+    public static void printLinkedList(Node head)
+    {
+        Node temp=head;
+        while(temp != null)
+        {
+            if(temp.next != null)System.out.print(temp.data+"->");
+            else
+            {
+                System.out.print(temp.data);
+            }
+            temp=temp.next;
+        }
+        System.out.println();
+    }
+    
+    public static Node insertAfterHead(Node head, int val)
+    {
+        Node front=head.next;
+        Node temp=new Node(val);
+        
+        head.next=temp;
+        front.prev=temp;
+        
+        temp.prev=head;
+        temp.next=front;
+        
+        return head;
+    }
+}
+
+Output:-
+Try programiz.pro
+1->2->4->3->8->6
+1->9->2->4->3->8->6
