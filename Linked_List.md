@@ -732,6 +732,29 @@ class Main
         }
         System.out.println();
     }
+
+    /*
+    Node constructDLL(int arr[]) {
+        // Code here
+        
+        int n=arr.length;
+        
+        Node head=new Node(arr[0]);
+        Node prev=head;
+        
+        for(int i=1;i<n;i++)
+        {
+            Node temp=new Node(arr[i]);
+            temp.next=null;
+            temp.prev=prev;
+            prev.next=temp;
+            prev=temp;
+        }
+        
+        return head;
+        
+    }
+    */
 }
 
 Ques 15)Delete the Head of the Doubly Linked List?
