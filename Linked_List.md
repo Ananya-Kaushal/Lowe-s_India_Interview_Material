@@ -1563,9 +1563,28 @@ class Main {
         }
         System.out.println();
     }
+
+    public static Node insertBeforeHead(Node head, int val)
+    {
+        Node newHead = new Node(val,head,null);
+        // newHead.prev=null;
+        
+        head.prev=newHead;
+        
+        return newHead;
+    }
     
     public static Node insertBeforeTail(Node head, int val)
     {
+        if(head == null)
+        {
+            return new Node(val);
+        }
+        
+        else if(head.next == null)
+        {
+            return insertBeforeHead(head, val);
+        }
         Node tail=head;
         
         while(tail.next != null)
