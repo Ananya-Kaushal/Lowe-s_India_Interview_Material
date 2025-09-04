@@ -2171,3 +2171,90 @@ class Solution {
 
 // T.C.:-O(n)
 // S.C.:-O(n) recursive stack memory
+
+Ques 28)Add Two Linke List?
+
+Solution):-
+
+  public class ListNode 
+  {
+      int val;
+      ListNode next;
+      ListNode() {}
+      ListNode(int val) { this.val = val; }
+      ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+  }
+
+class Solution {
+    public ListNode reverseLinkedList(ListNode head) 
+    { // code here
+
+        ListNode temp=head;
+        ListNode prev=null;
+        ListNode front=null;
+        
+        while(temp != null)
+        {
+            front=temp.next;
+            temp.next=prev;
+            prev=temp;
+            temp=front;
+            
+        }
+        
+        head=prev;
+        return head;
+    }
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        
+        ListNode head1=reverseLinkedList(l1);
+        ListNode head2=reverseLinkedList(l2);
+
+        ListNode head=new ListNode(-1);
+        ListNode curr=head;
+
+        ListNode temp1=head1;
+        ListNode temp2=head2;
+
+        int carry=0;
+        int sum=0;
+        while(temp1 != null || temp2 != null)
+        {
+            sum = carry;
+
+            if(temp1 != null)
+            {
+                sum += temp1.val;
+            }
+
+            if(temp2 != null)
+            {
+                sum += temp2.val;
+            }
+            carry=sum/10;
+            ListNode front=new ListNode(sum%10);
+
+            curr.next=front;
+            curr=curr.next;
+
+            if(temp1 != null)temp1=temp1.next;
+            if(temp2 != null)temp2=temp2.next;
+        }
+
+        if(carry != 0)
+        {
+            ListNode newNode=new ListNode(carry);
+            curr.next=newNode;
+        }
+
+        return reverseLinkedList(head.next);
+    }
+}
+
+Example 1:
+Input: l1 = [7,2,4,3], l2 = [5,6,4]
+Output: [7,8,0,7]
+
+Example 2:
+Input: l1 = [2,4,3], l2 = [5,6,4]
+Output: [8,0,7]
