@@ -2168,3 +2168,6 @@ class Solution {
         return newHead;
     }
 }
+
+// T.C.:-O(n)
+// S.C.:-O(n) recursive stack memory
