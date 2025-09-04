@@ -2248,6 +2248,18 @@ class Solution {
         }
 
         return reverseLinkedList(head.next);
+
+        // This needed to done ,if there are consecutive zeros at the start of head as 0 -> 0 -> 0 -> 5 -> 4 -> 8 -> 3 then to remove them we do this.
+        /*
+        Node ans=reverseLinkedList(head.next);
+        Node a=ans;
+        while(a.data == 0)
+        {
+            a=a.next;
+        }
+        
+        return a;
+        */
     }
 }
 
