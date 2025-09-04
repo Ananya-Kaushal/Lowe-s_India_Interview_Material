@@ -2056,3 +2056,48 @@ Output:-
 Try programiz.pro
 1->2->4->3->8->6
 6->8->3->4->2->1
+
+Ques 27)Reverse a Linked List?
+
+TYPE 1):-Only the data is reversed
+
+Solution):-
+
+class Node {
+    int data;
+    Node next;
+
+    Node(int x) {
+        data = x;
+        next = null;
+    }
+}
+
+class Solution {
+    Node reverseList(Node head) {
+        // code here
+        
+        Node temp=head;
+        Stack<Integer> st=new Stack<>();
+        
+        while(temp != null)
+        {
+            st.push(temp.data);
+            temp=temp.next;
+        }
+        
+        temp=head;
+        
+        while(temp != null)
+        {
+            temp.data = st.pop();
+            temp=temp.next;
+        }
+        
+        return head;
+    }
+}
+
+TYPE 2)Whole node is been reversed
+
+Solution):-
