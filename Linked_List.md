@@ -2210,7 +2210,7 @@ class Solution {
         ListNode head1=reverseLinkedList(l1);
         ListNode head2=reverseLinkedList(l2);
 
-        ListNode head=new ListNode(-1);
+        ListNode head=new ListNode(-1);//Known as Dummy Node Approach
         ListNode curr=head;
 
         ListNode temp1=head1;
