@@ -2101,3 +2101,35 @@ class Solution {
 TYPE 2)Whole node is been reversed
 
 Solution):-
+
+class Node {
+    int data;
+    Node next;
+
+    Node(int x) {
+        data = x;
+        next = null;
+    }
+}
+
+class Solution {
+    Node reverseList(Node head) {
+        // code here
+        
+        Node temp=head;
+        Node prev=null;
+        Node front=null;
+        
+        while(temp != null)
+        {
+            front=temp.next;
+            temp.next=prev;
+            prev=temp;
+            temp=front;
+            
+        }
+        
+        head=prev;
+        return head;
+    }
+}
