@@ -2059,7 +2059,7 @@ Try programiz.pro
 
 Ques 27)Reverse a Linked List?
 
-TYPE 1):-Only the data is reversed
+TYPE 1):-Only the data is reversed.
 
 Solution):-
 
@@ -2098,7 +2098,7 @@ class Solution {
     }
 }
 
-TYPE 2)Whole node is been reversed
+TYPE 2)Whole node is been reversed.
 
 Solution):-
 
@@ -2136,3 +2136,35 @@ class Solution {
 
 // T.C.:-O(n)
 // S.C.:-O(1)
+
+TYPE 3)Recursive Function to Reverse the Linked List.
+
+Solution):-
+
+class Node {
+    int data;
+    Node next;
+
+    Node(int x) {
+        data = x;
+        next = null;
+    }
+}
+
+class Solution {
+    Node reverseList(Node head) {
+        // code here
+        
+        if(head == null || head.next == null)
+        {
+            return head;
+        }
+        
+        Node newHead=reverseList(head.next);
+        Node front=head.next;
+        front.next=head;
+        head.next=null;
+        
+        return newHead;
+    }
+}
