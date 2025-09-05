@@ -2270,3 +2270,77 @@ Output: [7,8,0,7]
 Example 2:
 Input: l1 = [2,4,3], l2 = [5,6,4]
 Output: [8,0,7]
+
+Ques 29)Add 1 to the Linked List?
+
+Solution):-
+
+class Node{
+    int data;
+    Node next;
+
+    Node(int x){
+        data = x;
+        next = null;
+    }
+}
+
+class Solution {
+    public Node reverseLinkedList(Node head) 
+    { // code here
+
+        Node temp=head;
+        Node prev=null;
+        Node front=null;
+        
+        while(temp != null)
+        {
+            front=temp.next;
+            temp.next=prev;
+            prev=temp;
+            temp=front;
+            
+        }
+        
+        head=prev;
+        return head;
+    }
+    public Node addOne(Node head) {
+        // code here.
+        
+        Node temp=reverseLinkedList(head);
+        Node h=new Node(-1);
+        Node curr=h;
+        
+        int carry=1,sum=0;
+        while(temp != null)
+        {
+            sum=carry;
+            sum += temp.data;
+            Node newNode=new Node(sum%10);
+            carry=sum/10;
+            curr.next=newNode;
+            
+            curr=curr.next;
+            temp=temp.next;
+        }
+        
+        if(carry != 0)
+        {
+            Node newNode=new Node(carry);
+            curr.next=newNode;
+        }
+        
+        return reverseLinkedList(h.next);
+        
+        
+    }
+}
+
+Input: LinkedList: 4->5->6
+Output: 457
+Explanation: 4->5->6 represents 456 and when 1 is added it becomes 457. 
+
+Input: LinkedList: 1->2->3
+Output: 124
+Explanation:  1->2->3 represents 123 and when 1 is added it becomes 124. 
