@@ -2337,6 +2337,9 @@ class Solution {
     }
 }
 
+// T.C.:-O(3n)
+// S.C.:-O(1)
+
 Input: LinkedList: 4->5->6
 Output: 457
 Explanation: 4->5->6 represents 456 and when 1 is added it becomes 457. 
